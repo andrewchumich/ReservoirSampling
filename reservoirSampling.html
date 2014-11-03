@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.line {
+  stroke: #000;
+  stroke-width: 1px;
+  stroke-linecap: round;
+}
+
+.shuffle .line {
+  stroke: #aaa;
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  transition: all 500ms linear;
+}
+
+.shuffle .line--active {
+  stroke: #f00;
+  stroke-width: 3px;
+}
+
+.shuffle .line--inactive {
+  stroke: #ddd;
+}
+
+
+
+</style>
+<body class="container">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="./rainbowvis.js"></script>
+
+<br>
+<div class="row">
+  <div class="col-xs-4">
+    <label>Population Size</label>
+    <input type="number" class="form-control" id="population" min="0" max="1000" step="1" value="100">
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-4">
+    <label>Sample Size</label>
+    <input type="number" class="form-control" id="sample" min="0" max="1000" step="1" value="20">
+  </div>
+</div>
+<br>
+<button type="button" class="btn btn-primary" onclick="start_sample();">Make Sample</button> <br>
+<script src="./reservoirSampling.js"></script>
+
+</body>
