@@ -1,5 +1,7 @@
-function make_sample(population_size, sample_size) {
 
+
+function make_sample(population_size, sample_size, seed) {
+  Math.seedrandom(seed); 
   var rainbow = new Rainbow();
   var n = population_size,
       array = d3.range(n),
@@ -147,6 +149,7 @@ function make_sample(population_size, sample_size) {
 function start_sample() {
   var sample = parseInt(document.getElementById("sample")['value']);
   var population = parseInt(document.getElementById("population")['value']);
+  var seed = parseInt(document.getElementById("seed")['value']);
   console.log(population, sample);
-  make_sample(population, sample);
+  make_sample(population, sample, seed);
 }

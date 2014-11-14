@@ -29,6 +29,7 @@
 </style>
 <body class="container">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="./rainbowvis.js"></script>
 
@@ -46,8 +47,15 @@
     <input type="number" class="form-control" id="sample" min="0" max="1000" step="1" value="20">
   </div>
 </div>
+<div class="row">
+  <div class="col-xs-4">
+    <label>Random Seed</label>
+    <input type="number" class="form-control" id="seed"s step="1" value="1">
+  </div>
+</div>
 <br>
 <button type="button" class="btn btn-primary" onclick="start_sample();">Make Sample</button> <br>
 <script src="./reservoirSampling.js"></script>
+
 
 </body>
