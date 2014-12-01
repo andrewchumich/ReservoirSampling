@@ -61,7 +61,7 @@ function make_sample(population_size, sample_size, seed) {
       .each("start", function start() {
         var action = actions.pop();
         switch (action.type) {
-          case "copy": {
+          case "swap_in": {
             var i = action[0],
                 j = action[1],
                 e = line1[j] = line0[i],
@@ -71,7 +71,7 @@ function make_sample(population_size, sample_size, seed) {
             transition.each(function() { d3.select(e).transition().attr("transform", transform); });
             break;
           }
-          case "swap": {
+          case "swap_current_line": {
             var t = line0;
             line0 = line1;
             line1 = t;
@@ -119,7 +119,7 @@ function make_sample(population_size, sample_size, seed) {
     // place first n elements into sample
     for( var i = 0; i < n; i++ ) {
       reservoir.push(population[i]);
-      actions.push({type: "copy", "0": i, "1": i});
+      actions.push({type: "swap_in", "0": i, "1": i});
     }
 
     /* 
@@ -132,11 +132,11 @@ function make_sample(population_size, sample_size, seed) {
       if( p < n ) {
         reservoir[p] = population[i];
         // remove selected item from "bus"
-        actions.push({type: "swap"});
+        actions.push({type: "swap_current_line"});
         actions.push({type: "swap_out", "0": p, "1": trash_index++});
         // add new item to "bus"
-        actions.push({type: "swap"});
-        actions.push({type: "copy", "0": i, "1": p}); 
+        actions.push({type: "swap_current_line"});
+        actions.push({type: "swap_in", "0": i, "1": p}); 
 
       }
     }
